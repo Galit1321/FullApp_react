@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import Clock from "./Clock"
 import axios from "axios";
+import Field from "./Field";
 
 
 class App extends Component {
@@ -15,14 +16,17 @@ class App extends Component {
       data:[],
       name: null,
       password:null
-    
-    
+   
   };}
 
-  
+  handlePasswordChange=(value)=>{
+    this.setState({password:value})
+  }
 
-  
-  putDataToDB = (name,password) => {
+  handleNameChange=(name_value)=>{
+    this.setState({name:name_value})
+  }
+  putDataToDB = () => {
     let currentIds = this.state.data.map(data => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {
@@ -31,8 +35,8 @@ class App extends Component {
 
     axios.post("http://localhost:3001/api/putData", { 
       id: idToBeAdded,
-      name:name,
-      password:password
+      name:this.state.name,
+      password:this.state.password
       });
   };
  
@@ -40,24 +44,12 @@ class App extends Component {
     return (
       <div>
       <Clock></Clock>
-        <div style={{ padding: "10px" }}>
-    <input
-    type="text"
+        
+    <Field    content={this.handleNameChange}
+    remark="insert name"></Field>
   
-    onChange={e => this.setState({ name: e.target.value })}
-    placeholder="insert name"
-    style={{ width: "200px" }}
-    /></div>
-    
-        <div style={{ padding: "10px" }}>
-    <input
-    type="text"
-   
-    onChange={e => this.setState({ password: e.target.value })}
-    placeholder="insert password"
-    style={{ width: "200px" }}
-    /></div>
-          <button onClick={() => this.putDataToDB(this.state.name,this.state.password)}>
+    <Field remark="insert password"  content={this.handlePasswordChange} />
+          <button onClick={() => this.putDataToDB()}>
             ADD
           </button>
        
