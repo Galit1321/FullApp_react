@@ -1,90 +1,70 @@
-const express = require('express');
-var cors = require('cors');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
+const mongoose = require("mongoose");
 
+const express = require("express");
+const bodyParser = require("body-parser");
+const logger = require("morgan");
+const Data = require("./data");
 
 const API_PORT = 3001;
 const app = express();
-app.use(cors());
 const router = express.Router();
 
-
-/*
-// this is our MongoDB database
-
-var url = 'mongodb+srv://galit1321:039791639@cluster0-armca.mongodb.net/test?retryWrites=true&w=majority';
-// connects our back end code with the database
-mongoose.connect(url, { useNewUrlParser: true });
-
+mongoose.connect('mongodb://localhost:27017/Fullstack', { useNewUrlParser: true });
 let db = mongoose.connection;
 
-db.once('open', () => console.log('connected to the database'));
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
-// checks if connection with the database is successful
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-*/
-// (optional) only made for logging and
-// bodyParser, parses the request body to be a readable json format
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(logger('dev'));
+app.use(logger("dev"));
 
-const DataSet=[];
-// this is our get method
-// this method fetches all available data in our database
-/*router.get('/getData', (req, res) => {
+router.get("/", (req, res) => {
+  res.json({ message: "HELLOW WORLDUUHHHH" });
+});
+
+router.get("/getData", (req, res) => {
   Data.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });
   });
 });
 
-// this is our update method
-// this method overwrites existing data in our database
-router.post('/updateData', (req, res) => {
+router.post("/updateData", (req, res) => {
   const { id, update } = req.body;
-  Data.findByIdAndUpdate(id, update, (err) => {
+  Data.findByIdAndUpdate(id, update, err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });
 });
 
-// this is our delete method
-// this method removes existing data in our database
-router.delete('/deleteData', (req, res) => {
+router.delete("/deleteData", (req, res) => {
   const { id } = req.body;
-  Data.findByIdAndRemove(id, (err) => {
+  Data.findByIdAndRemove(id, err => {
     if (err) return res.send(err);
     return res.json({ success: true });
   });
-});*/
-
-// this is our create methid
-// this method adds new data in our database
-router.post('/putData', (req, res) => {
-  let data = {};
-
-  const { id, name,password } = req.body;
-  console.log( id, name,password );
-  if ((!id && id !== 0) || !name|| !password) {
-    return res.json({
-      success: false,
-      error: 'INVALID INPUTS',
-    });
-  }
-  data.name = name;
-  data.password=password;
-  data.id = id;
-  DataSet.push(data);
-  console.log(DataSet);
-    return res.json({ success: true });
-;
-
 });
 
-// append /api for our http requests
-app.use('/api', router);
+//router.post("/putData", (req, res) => {
+  let data = new Data();
+  console.log("hello");
+  const  id=22;
+  const message  = "22";
+  if ((!id && id !== 0) || !message) {
+    console.log("fail");
+    return res.json({
+      success: false,
+      error: "INVALID INPUTS"
+    });
+  }
+  data.message = message;
+  data.id = id;
+  data.save(err => {
+    if (err) console.log("fail");  
+    return console.log( "success true" );
+  });
 
-// launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+
+app.use("/api", router);
+
+app.listen(API_PORT, () => console.log(`LISTENING ON UHH PORT ${API_PORT}`));
