@@ -27,8 +27,29 @@ router.get("/", (req, res) => {
   res.json({ message: "HELLOW WORLDUUHHHH" });
 });
 
+router.post("/updateData", (req, res) => {
+  const { id, update } = req.body;
+  Data.findByIdAndUpdate(id, update, err => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true });
+  });
+});
 
-const DataSet=[];
+router.delete("/deleteData", (req, res) => {
+  const { id } = req.body;
+  Data.findByIdAndRemove(id, err => {
+    if (err) return res.send(err);
+    return res.json({ success: true });
+  });
+});
+
+router.get("/getData", (req, res) => {
+  Data.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
+});
+
 router.post('/putData', (req, res) => {
   let data = new Data();
   console.log("dsd");
@@ -44,8 +65,8 @@ router.post('/putData', (req, res) => {
   data.password=password;
   data.id = id;
   data.save(err => {
-    if (err) console.log("fail");  
-    return console.log( "success true" );
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true });
   });
 
 

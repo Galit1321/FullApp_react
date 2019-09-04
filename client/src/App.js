@@ -2,57 +2,37 @@ import React, { Component } from "react";
 
 import Clock from "./Clock"
 import axios from "axios";
-import Field from "./Field";
-
+import './css/App.css';
+import './Register'
+import { Redirect } from 'react-router-dom'
 
 class App extends Component {
-
-  constructor(props) {
+  constructor(props){
     super(props);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
-    id: 0,
-      data:[],
-      name: null,
-      password:null
-   
-  };}
-
-  handlePasswordChange=(value)=>{
-    this.setState({password:value})
-  }
-
-  handleNameChange=(name_value)=>{
-    this.setState({name:name_value})
-  }
-  putDataToDB = () => {
-    let currentIds = this.state.data.map(data => data.id);
-    let idToBeAdded = 0;
-    while (currentIds.includes(idToBeAdded)) {
-      ++idToBeAdded;
+      redirect: false
     }
-    console.log("b4post");
-    axios.post("http://localhost:3001/api/putData", { 
-      id: idToBeAdded,
-      name:this.state.name,
-      password:this.state.password
-      });console.log("afterpost");
-  };
- 
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/Register' />
+    }
+  } 
+  
   render() {
-    return (
+      return (
       <div>
       <Clock></Clock>
-        
-    <Field    content={this.handleNameChange}
-    remark="insert name"></Field>
-  
-    <Field remark="insert password"  content={this.handlePasswordChange} />
-          <button onClick={() => this.putDataToDB()}>
-            ADD
-          </button>
-        </div>
+      <div className="button_cont" align="center">
+      <a className="example_f" onClick={this.setRedirect} target="_blank" rel="nofollow">
+      <span>Register</span></a></div>
+      </div>
       
     );
   }
