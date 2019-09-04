@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 import Clock from "./Clock"
-import axios from "axios";
+import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import './css/App.css';
-import './Register'
-import { Redirect } from 'react-router-dom'
+import Register from "./Register";
+
 
 class App extends Component {
   constructor(props){
@@ -13,29 +13,33 @@ class App extends Component {
       redirect: false
     }
   }
-
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  }
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/Register' />
-    }
-  } 
   
   render() {
       return (
-      <div>
-      <Clock></Clock>
-      <div className="button_cont" align="center">
-      <a className="example_f" onClick={this.setRedirect} target="_blank" rel="nofollow">
-      <span>Register</span></a></div>
+        <Router>
+ <div>
+      
+      <Switch>
+      <Route  path='/' exact component={Home}/> 
+      <Route  path='/Register' component={Register}/> 
+      </Switch>
+ 
       </div>
+        </Router>
+     
       
     );
   }
 }
+
+const Home = ()=> (
+  <div>
+ <Clock></Clock>
+     <div class="button_cont" align="center">
+     <a class="example_f" href="http://localhost:3000/Register" target="_blank" rel="nofollow">
+     <span>Register</span></a></div>
+  </div>
+);
+
 
 export default App;
