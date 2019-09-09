@@ -22,7 +22,7 @@ class Register extends Component {
       objectToUpdate: null
    
   };}
-  componentDidMount() {
+ /* componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
       let interval = setInterval(this.getDataFromDb, 1000);
@@ -35,10 +35,10 @@ class Register extends Component {
       clearInterval(this.state.intervalIsSet);
       this.setState({ intervalIsSet: null });
     }
-  }
-  handlePasswordChange=(value)=>{
-    this.setState({password:value})
-  }
+  }*/
+    handlePasswordChange=(value)=>{
+      this.setState({password:value})
+    }
 
   handleNameChange=(name_value)=>{
     this.setState({name:name_value})
@@ -94,7 +94,6 @@ class Register extends Component {
     const { data } = this.state;
     return (
       <div>
-      <Clock></Clock>
       <ul>
           {data.length <= 0 ? "NO DB ENTRIES YET" : data.map(dat => (
             <li style={{ padding: "10px" }} key={dat}>
@@ -104,10 +103,10 @@ class Register extends Component {
             </li>
           ))}
         </ul> 
-    <Field    content={this.handleNameChange}
+    <Field type_field='text'    content={this.handleNameChange}
     remark="insert name"></Field>
   
-    <Field remark="insert password"  content={this.handlePasswordChange} />
+    <Field remark="insert password" type_field="password"  content={this.handlePasswordChange} />
           <button onClick={() => this.putDataToDB()}>
             ADD
           </button>

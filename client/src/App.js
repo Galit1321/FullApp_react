@@ -4,6 +4,8 @@ import Clock from "./Clock"
 import { BrowserRouter as Router, Route,Switch} from "react-router-dom";
 import './css/App.css';
 import Register from "./Register";
+import Nav from "./Nav"
+import Login from "./Login";
 
 
 class App extends Component {
@@ -18,16 +20,15 @@ class App extends Component {
       return (
         <Router>
  <div>
-      
+      <Nav isLoggedIn={false}/>
       <Switch>
       <Route  path='/' exact component={Home}/> 
       <Route  path='/Register' component={Register}/> 
+      <Route path='/Login' component={Login}/>
       </Switch>
  
       </div>
         </Router>
-     
-      
     );
   }
 }
@@ -35,9 +36,7 @@ class App extends Component {
 const Home = ()=> (
   <div>
  <Clock></Clock>
-     <div class="button_cont" align="center">
-     <a class="example_f" href="http://localhost:3000/Register" target="_blank" rel="nofollow">
-     <span>Register</span></a></div>
+     
   </div>
 );
 

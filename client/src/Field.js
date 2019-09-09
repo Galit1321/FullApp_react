@@ -16,7 +16,7 @@ render(){
     
     <div style={{ padding: "10px" }}>
     <input
-    type="text"
+    type={this.props.type_field}
     onChange={this.handleChange} 
     placeholder={this.props.remark}
     style={{ width: "200px" }}
