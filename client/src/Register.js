@@ -1,28 +1,24 @@
 import React, { Component } from "react";
-
-import Clock from "./Clock"
 import axios from "axios";
 import Field from "./Field";
 
-
 class Register extends Component {
-
   constructor(props) {
     super(props);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
-    id: 0,
-      data:[],
+      id: 0,
+      data: [],
       name: null,
-      password:null,
+      password: null,
       intervalIsSet: false,
       idToDelete: null,
       idToUpdate: null,
       objectToUpdate: null
-   
-  };}
- /* componentDidMount() {
+    };
+  }
+  /* componentDidMount() {
     this.getDataFromDb();
     if (!this.state.intervalIsSet) {
       let interval = setInterval(this.getDataFromDb, 1000);
@@ -36,13 +32,13 @@ class Register extends Component {
       this.setState({ intervalIsSet: null });
     }
   }*/
-    handlePasswordChange=(value)=>{
-      this.setState({password:value})
-    }
+  handlePasswordChange = value => {
+    this.setState({ password: value });
+  };
 
-  handleNameChange=(name_value)=>{
-    this.setState({name:name_value})
-  }
+  handleNameChange = name_value => {
+    this.setState({ name: name_value });
+  };
 
   deleteFromDB = idTodelete => {
     let objIdToDelete = null;
@@ -79,11 +75,11 @@ class Register extends Component {
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
-    axios.post("http://localhost:3001/api/putData", { 
+    axios.post("http://localhost:3001/api/putData", {
       id: idToBeAdded,
-      name:this.state.name,
-      password:this.state.password
-      });
+      name: this.state.name,
+      password: this.state.password
+    });
   };
   getDataFromDb = () => {
     fetch("http://localhost:3001/api/getData")
@@ -91,29 +87,40 @@ class Register extends Component {
       .then(res => this.setState({ data: res.data }));
   };
   render() {
-    const { data } = this.state;
+    //const { data } = this.state;
     return (
       <div>
-      <ul>
-          {data.length <= 0 ? "NO DB ENTRIES YET" : data.map(dat => (
-            <li style={{ padding: "10px" }} key={dat}>
-              <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
-              <span style={{ color: "gray" }}> data: </span>
-              {dat.name}
-            </li>
-          ))}
-        </ul> 
-    <Field type_field='text'    content={this.handleNameChange}
-    remark="insert name"></Field>
-  
-    <Field remark="insert password" type_field="password"  content={this.handlePasswordChange} />
-          <button onClick={() => this.putDataToDB()}>
-            ADD
-          </button>
-        </div>
-      
+        
+        <Field
+          type_field="text"
+          content={this.handleNameChange}
+          remark="insert name"
+        ></Field>
+
+        <Field
+          remark="insert password"
+          type_field="password"
+          content={this.handlePasswordChange}
+        />
+        <button onClick={() => this.putDataToDB()}>ADD</button>
+      </div>
     );
   }
 }
 
 export default Register;
+
+
+/*
+<ul>
+          {data.length <= 0
+            ? "NO DB ENTRIES YET"
+            : data.map(dat => (
+                <li style={{ padding: "10px" }} key={dat}>
+                  <span style={{ color: "gray" }}> id: </span> {dat.id} <br />
+                  <span style={{ color: "gray" }}> data: </span>
+                  {dat.name}
+                </li>
+              ))}
+        </ul>
+*/
