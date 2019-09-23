@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./css/App.css";
 import Register from "./Register";
 import Nav from "./Nav";
-import Bar from './Bar';
+import Bar from "./Bar";
 import Login from "./Login";
 import Profile from "./Profile";
 
@@ -15,12 +15,12 @@ class App extends Component {
       isLoggedIn: false
     };
   }
-  
+
   render() {
     return (
-      <Router>
-        <div>
-        <Nav />
+      <div >
+        <Router>
+          <Nav />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/Register" component={Register} />
@@ -28,18 +28,16 @@ class App extends Component {
             <Route path="/Add" component={Profile} />
             <Route path="/YouTube" component={Bar} />
           </Switch>
-        </div>
-      </Router>
+        </Router>
+      </div>
     );
   }
 }
 
 const Home = () => (
-    <div>
-      <h1 >  Welcome to my website</h1>
-     
-    </div>
-  
+  <div>
+    <h1> Welcome to my website</h1>
+  </div>
 );
 
 export default App;

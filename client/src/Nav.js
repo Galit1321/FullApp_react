@@ -1,14 +1,13 @@
 import React from "react";
 import "./App";
 import { Link } from "react-router-dom";
-import Image from './resources/kissclipart-hot-chocolate-clipart-hot-chocolate-marshmallow-cl-4e1822fb368fa8c9.png';
+import Image from './resources/kissclipart-joyeux-anniversaire-graldine-clipart-beautiful-b-c7adf46dc9650568.png'
 import Clock from "./Clock";
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.handleLoginClick = this.handleLoginClick.bind(this);
-   
   }
 
   handleLoginClick() {
@@ -32,7 +31,7 @@ class Nav extends React.Component {
             <li>Login</li>
           </Link>
           <Link to="/YouTube">
-            <li>YouTube</li>
+          <li>YouTube</li>
           </Link>
         </ul>
     </nav>

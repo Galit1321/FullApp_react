@@ -1,4 +1,10 @@
+body{
+  background-image: url("../resources/butterfly-2049567_1280.jpg");
+  background-size: 100%;
+  align-items: center;
 
+  
+}
 img {
   width: 9vh;
   height: 9vh;
@@ -11,7 +17,8 @@ table{
 h1{
   align-content: center;
   font-family:'Bradley Hand ITC', sans-serif;
-  color: darkblue;
+  color: white;
+  text-align: center;
 }
 .tr_row{
   font-size: 7vh;
@@ -23,7 +30,7 @@ h1{
 nav {
   align-items: center;
   min-height: 10vh;
-  background: lightskyblue;
+  background:lightsteelblue;
    
 }
 .nav-links {
