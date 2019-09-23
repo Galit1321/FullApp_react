@@ -1,53 +1,73 @@
-nav{
-  display: flex;
-  justify-content: space-around;
+
+img {
+  width: 9vh;
+  height: 9vh;
+}
+
+table{
+  width: 100%;
+  font: outline;
+}
+h1{
+  align-content: center;
+  font-family:'Bradley Hand ITC', sans-serif;
+  color: darkblue;
+}
+.tr_row{
+  font-size: 7vh;
+  font-family:'Bradley Hand ITC', sans-serif;
+  margin: 0px,0px,30px,10px;
+  background-color: rgb(133, 125, 182);
+  align-content: center;
+}
+nav {
   align-items: center;
   min-height: 10vh;
-  background: lightblue;
-  color: white;
+  background: lightskyblue;
+   
 }
-.nav-links{
+.nav-links {
   width: 50%;
-  display: flex;
+  display: flex; 
   justify-content: space-around;
   align-items: center;
   font: outline;
   list-style: none;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+  font-family:'David', sans-serif;
 }
 
-  .example_f {
-    border-radius: 4px;
-    background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 22px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.4s;
-    cursor: pointer;
-    margin: 5px;
-  }
-  .example_f span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.4s;
-  }
-  .example_f span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  .example_f:hover span {
-    padding-right: 25px;
-  }
-  .example_f:hover span:after {
-    opacity: 1;
-    right: 0;
-  }
+.example_f {
+  border-radius: 4px;
+  background: linear-gradient(to right, #67b26b, #4ca2cb) !important;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 22px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.4s;
+  cursor: pointer;
+  margin: 5px;
+}
+.example_f span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+.example_f span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.example_f:hover span {
+  padding-right: 25px;
+}
+.example_f:hover span:after {
+  opacity: 1;
+  right: 0;
+}

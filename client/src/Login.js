@@ -3,9 +3,13 @@ import Field from "./Field";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
+
 class Login extends React.Component {
+
   constructor(props) {
+    
     super(props);
+    
     this.handleUserInsertion = this.handleUserInsertion.bind(this);
     this.handlePasswordInsertion = this.handlePasswordInsertion.bind(this);
     this.state = {
@@ -23,12 +27,20 @@ class Login extends React.Component {
       name: this.state.name,
       password: this.state.password
     };
+
+    
+
     if (!(user.name && user.password)) {
       return;
     }
     axios.post(`http://localhost:3001/api/findUser`, { user }).then(res => {
       console.log(res);
+      const { history } = this.props;
       console.log(res.data.success);
+      if(res.data.success){
+        history.replace("/Add");
+       
+      }
     });
   };
 

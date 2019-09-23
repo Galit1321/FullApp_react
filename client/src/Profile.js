@@ -6,6 +6,7 @@ import Field from "./Field";
 class Profile extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       img: "../public/heart.png",
       name: "kitty",

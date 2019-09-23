@@ -79,8 +79,17 @@ class Register extends Component {
       id: idToBeAdded,
       name: this.state.name,
       password: this.state.password
+    }).then(res => {
+      console.log(res);
+      const { history } = this.props;
+      console.log(res.data.success);
+      if(res.data.success){
+        history.replace("/Login");
+       
+      }
     });
   };
+
   getDataFromDb = () => {
     fetch("http://localhost:3001/api/getData")
       .then(data => data.json())
