@@ -70,6 +70,7 @@ class Register extends Component {
   };
 
   putDataToDB = () => {
+    console.log("start");
     let currentIds = this.state.data.map(data => data.id);
     let idToBeAdded = 0;
     while (currentIds.includes(idToBeAdded)) {

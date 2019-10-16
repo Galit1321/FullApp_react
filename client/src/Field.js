@@ -15,7 +15,7 @@ render(){
 
     return (
     
-    <div style={{ padding: "10px" }}>
+    <div className='field'>
     <input 
     type={this.props.type_field}
     onChange={this.handleChange} 

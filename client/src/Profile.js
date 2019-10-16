@@ -28,7 +28,7 @@ class Profile extends React.Component {
       <div>
         <img src={image} alt="profile"></img>
         <h1>{this.state.name}</h1>
-        <ReactPlayer url={this.state.url} playing />
+        <ReactPlayer url={this.state.url}  />
         <Field
         value={this.state.f_value}
           type_field="text"
