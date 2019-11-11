@@ -33,6 +33,9 @@ class Nav extends React.Component {
           <Link to="/YouTube">
           <li>YouTube</li>
           </Link>
+          <Link to="/Game">
+          <li>Game</li>
+          </Link>
         </ul>
     </nav>
       

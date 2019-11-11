@@ -2,16 +2,36 @@ body{
   background-image: url("../resources/butterfly-2049567_1280.jpg");
   background-size: 100%;
   align-items: center;  
+  
 }
 
 img {
   width: 9vh;
   height: 9vh;
 }
+.Main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: greenyellow;
+}
 
 table{
-  width: 100%;
+  width: flex;
   font: outline;
+  align-items: center;
+  border-collapse: collapse;
+}
+.grid{
+  margin: 0%;
+  padding: 0%;
+  background-color: gray;
+  align-items: center; 
+}
+th{
+  margin: 0%;
+  padding: 0%;
 }
 h1{
   align-content: center;

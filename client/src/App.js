@@ -5,7 +5,7 @@ import Register from "./Register";
 import Nav from "./Nav";
 import Bar from "./Bar";
 import Login from "./Login";
-import Profile from "./Profile";
+import Game from "./Game";
 
 class App extends Component {
   constructor(props) {
@@ -21,13 +21,17 @@ class App extends Component {
       <div >
         <Router>
           <Nav />
+          <div className="Main">
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/Register" component={Register} />
             <Route path="/Login" component={Login} />
-            <Route path="/Add" component={Profile} />
+           
             <Route path="/YouTube" component={Bar} />
+            <Route path='/Game' component={Game}/>
           </Switch>
+          </div>
+          
         </Router>
       </div>
     );

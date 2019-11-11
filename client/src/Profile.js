@@ -30,7 +30,7 @@ class Profile extends React.Component {
         <h1>{this.state.name}</h1>
         <ReactPlayer url={this.state.url}  />
         <Field
-        value={this.state.f_value}
+          value={this.state.f_value}
           type_field="text"
           content={this.handleURLChange}
           remark="insert new URL"
