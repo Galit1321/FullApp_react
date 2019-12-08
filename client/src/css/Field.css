@@ -66,9 +66,9 @@ LEVEL 1. RESET STYLES
     --uiFieldFontSize: var(--fieldFontSize, 1em);
     --uiFieldHintFontSize: var(--fieldHintFontSize, 1em);
   
-    --uiFieldPaddingRight: var(--fieldPaddingRight, 15px);
-    --uiFieldPaddingBottom: var(--fieldPaddingBottom, 15px);
-    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 15px);   
+    --uiFieldPaddingRight: var(--fieldPaddingRight,0px);
+    --uiFieldPaddingBottom: var(--fieldPaddingBottom, 0px);
+    --uiFieldPaddingLeft: var(--fieldPaddingLeft, 0px);   
   
     position: relative;
     box-sizing: border-box;
@@ -124,7 +124,7 @@ LEVEL 1. RESET STYLES
     position: absolute;
     left: var(--uiFieldPaddingLeft);
     bottom: calc(50% - .5em);
-  
+    font-family: Arial, Helvetica, sans-serif;
     line-height: 1;
     font-size: var(--uiFieldHintFontSize);
   
@@ -224,7 +224,6 @@ LEVEL 1. RESET STYLES
   .page{
     box-sizing: border-box;
     width: 100%;
-    max-width: 1000px;
     margin: auto;
     padding: 15px;
     

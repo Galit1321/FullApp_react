@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 //var passport = require('passport');
-const Data = require("../data");
+const Data = require("../models/data");
 const User=require("../models/Users")
 
 /*
@@ -39,21 +39,19 @@ router.post("/updateData", (req, res) => {
     });
   });
 
-  router.post("/putData", (req, res) => {
+  router.post("/putUser", (req, res) => {
     console.log("server");
-    let data = new Data();
-    const { id, name, password } = req.body;
-    if ((!id && id !== 0) || !name || !password) {
+    let user = new User();
+    const new_user = req.body;
+    if ((!new_user.id && new_user.id!== 0) || !new_user.name || !new_user.password) {
       return res.json({
         success: false,
         error: "INVALID INPUTS"
       });
     }
-    console.log(id, name, password);
-    data.name = name;
-    data.password = password;
-    data.id = 100;
-    data.save(err => {
+    console.log(new_user);
+    user=new_user;
+    user.save(err => {
       if (err) return res.json({ success: false, error: err });
       return res.json({ success: true });
     });
