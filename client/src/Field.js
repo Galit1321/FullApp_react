@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import "./css/Field.css"
 class Field extends Component{
 
     constructor(props) {
@@ -14,13 +14,18 @@ class Field extends Component{
 render(){
 
     return (
-    
-    <div className='field'>
-    <input 
-    type={this.props.type_field}
+    <div className="page">
+    <label className="field a-field a-field_a1">
+      <input className="field__input a-field__input" type={this.props.type_field}
     onChange={this.handleChange} 
-    placeholder={this.props.remark}
-    style={{ width: "200px" }}
-    /></div>);}
+    placeholder={this.props.remark} required/>
+      <span className="a-field__label-wrap">
+        <span className="a-field__label">{this.props.title}</span>
+      </span>
+    </label>
+  
+  </div>
+      
+   );}
 }
 export default Field;

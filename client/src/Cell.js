@@ -5,13 +5,12 @@ import "./css/Cell.css";
 class Cell extends Component{
     render(){
         const data=this.props.parm;
-        console.log(data);
         if (data.full){
-            return (<div className={data.kind}>{data.id}
+            return (<div className={data.kind}> hey {data.id}
                 </div>);
         }
         return (
-            <div className="emptyCell">
+            <div className="emptyCell"> {data.id}
             </div>       
         );
     }

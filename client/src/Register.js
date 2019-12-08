@@ -10,8 +10,10 @@ class Register extends Component {
     this.state = {
       id: 0,
       data: [],
+      user_name:null,
       name: null,
       password: null,
+      email: null,
       intervalIsSet: false,
       idToDelete: null,
       idToUpdate: null,
@@ -36,8 +38,17 @@ class Register extends Component {
     this.setState({ password: value });
   };
 
+  handleUserChange = value => {
+    this.setState({ user_name: value });
+  };
+
+
   handleNameChange = name_value => {
     this.setState({ name: name_value });
+  };
+
+  handleEmailChange = name_value => {
+    this.setState({ email: name_value });
   };
 
   deleteFromDB = idTodelete => {
@@ -72,16 +83,16 @@ class Register extends Component {
   putDataToDB = () => {
     console.log("start");
     let currentIds = this.state.data.map(data => data.id);
-    let idToBeAdded = 0;
+    let idToBeAdded = 10;
     while (currentIds.includes(idToBeAdded)) {
       ++idToBeAdded;
     }
     axios.post("http://localhost:3001/api/putData", {
       id: idToBeAdded,
       name: this.state.name,
-      password: this.state.password
+      password: this.state.password,
+      email: this.state.email,
     }).then(res => {
-      console.log(res);
       const { history } = this.props;
       console.log(res.data.success);
       if(res.data.success){
@@ -99,10 +110,11 @@ class Register extends Component {
   render() {
     //const { data } = this.state;
     return (
-      <div>
+      <div className="Register">
         
         <Field
           type_field="text"
+          title="Name"
           content={this.handleNameChange}
           remark="insert name"
         ></Field>
@@ -111,6 +123,16 @@ class Register extends Component {
           remark="insert password"
           type_field="password"
           content={this.handlePasswordChange}
+        />
+        <Field
+          remark="insert email"
+          type_field="email"
+          content={this.handleEmailChange}
+        />
+        <Field
+          remark="insert username"
+          type_field="user Name"
+          content={this.handleUserChange}
         />
         <button onClick={() => this.putDataToDB()}>ADD</button>
       </div>

@@ -5,47 +5,48 @@ import Cell from "./Cell"
 class Game extends Component{
     constructor(props){
         super(props);
-        let data=[];
+        let grid=new Map();
         this.state={
             score:0,
             name:props.name,
-            data: data,
+            data: grid,
         }
     }
 
-    addElem(){
+    addElem(e){
         let rr1,rc1;
         do {
             rr1=Math.floor(Math.random() * 4); 
             rc1=Math.floor(Math.random() * 4);
         }
         while (this.state.data[rr1][rc1].full);
-        this.setState(prevState => ({
+        /*this.setState(prevState => ({
             data: {
                 ...prevState.data,
                 [prevState.data[rr1][rc1].full]: e.target.value,
             },
-        })); 
+        })); */
     }
 
-    changeCell =()=>{
-        this.data[0][0].id=3;
-
-    
+    changeCell =(data)=>{  
+       // let values=Array.from(data.data);
+        //console.log('line 32 ' +JSON.stringify(data));
+        ///console.log(values);
     }
+
+
     createData() {
         let res=[];
         let id=1;
         for (let i=0;i<4;i++){
             for (let j=0;j<4;j++){
-            res.push({id:id , kind: "cell" ,full: false,});
+            res.push({id:id , kind: "cell" ,full: false});
             id++;
         }
-        this.state.data.push(res);
+        this.state.data.set(i,res);
         res=[];
         }
-        this.addElem();
-        this.addElem();
+        console.log(this.state.data)
     }
 
     componentDidMount() {
@@ -62,16 +63,16 @@ class Game extends Component{
         return (<div >
         <div>
         <h1> {score}</h1>
-        <p1> Welcome to the game </p1>   
+        <h1> Welcome to the game </h1>   
         </div>
         <table>
-        <tbody>
+        <tbody >
           {data.length <= 0
             ? "NO DB ENTRIES YET"
-            : data.map(dat => (
-                <tr  key={dat}  >
-                    {dat.map(elem => (
-                        <th> 
+            : data.keys().map( k =>(
+                <tr  key={k}  >
+                    {data.map(elem => (
+                        <th key={elem.id}> 
                         <Cell parm={elem} /> 
                         </th>
                     ))}
@@ -79,7 +80,7 @@ class Game extends Component{
               ))}
               </tbody>
                 </table>
-                    <button onClick={this.changeCell} > ClickMe</button>
+                    <button onClick={this.changeCell({data})} > ClickMe</button>
     
         </div>);
 

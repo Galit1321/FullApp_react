@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var passport = require('passport');
+//var passport = require('passport');
 const Data = require("../data");
+const User=require("../models/Users")
 
-
+/*
 passport.use(new LocalStrategy(
     function(username, password, done) {
         Data.findOne({
@@ -29,7 +30,7 @@ passport.deserializeUser(function(id, done) {
     Data.findById(id, function(err, user) {
         done(err, user);
     });
-});
+});*/
 router.post("/updateData", (req, res) => {
     const { id, update } = req.body;
     Data.findByIdAndUpdate(id, update, err => {
@@ -41,18 +42,17 @@ router.post("/updateData", (req, res) => {
   router.post("/putData", (req, res) => {
     console.log("server");
     let data = new Data();
-    console.log("dsd");
     const { id, name, password } = req.body;
-    console.log(id, name, password);
     if ((!id && id !== 0) || !name || !password) {
       return res.json({
         success: false,
         error: "INVALID INPUTS"
       });
     }
+    console.log(id, name, password);
     data.name = name;
-    data.url = password;
-    data.id = id;
+    data.password = password;
+    data.id = 100;
     data.save(err => {
       if (err) return res.json({ success: false, error: err });
       return res.json({ success: true });
@@ -79,10 +79,17 @@ router.post("/updateData", (req, res) => {
     });
   });
   
-  router.get("/getData",passport.authenticate('local', { failureFlash: 'Invalid username or password.' }), (req, res) => {
+  router.get("/getData", (req, res) => {
     Data.find((err, data) => {
       if (err) return res.json({ success: false, error: err });
       return res.json({ success: true, data: data });
     });
   });
+
+
+    
+  router.get("/getScore", (req, res) => {
+      return res.json({ score: 100 });
+    });
   
+  module.exports = router;
