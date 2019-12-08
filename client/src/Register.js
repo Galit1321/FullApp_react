@@ -10,7 +10,7 @@ class Register extends Component {
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.state = {
       id: 0,
-      data: [],
+      data: [1,2,3,4],
       user_name:null,
       name: null,
       password: null,
@@ -35,17 +35,10 @@ class Register extends Component {
     this.setState({ email: name_value });
   };
 
-
- 
-
   putDataToDB = () => {
-    let currentIds = this.state.data.map(data => data.id);
-    let idToBeAdded = 10;
-    while (currentIds.includes(idToBeAdded)) {
-      ++idToBeAdded;
-    }
+    this.setState({id: this.state.id++})
     axios.post("http://localhost:3001/api/putUser", {
-      id: idToBeAdded,
+      id: this.state.id,
       name: this.state.name,
       password: this.state.password,
       email: this.state.email,
@@ -55,7 +48,6 @@ class Register extends Component {
       console.log(res.data.success);
       if(res.data.success){
         history.replace("/Login");
-       
       }
     });
   };
@@ -75,23 +67,23 @@ class Register extends Component {
           type_field="text"
           title="Name"
           content={this.handleNameChange}
-          remark="insert name"
+          
         />
 
         <Field
-          remark="insert password"
+         
           type_field="password"
           title="Password"
           content={this.handlePasswordChange}
         />
         <Field
-          remark="insert email"
+          
           type_field="email"
           title="Email"
           content={this.handleEmailChange}
         />
         <Field
-          remark="insert username"
+          
           type_field="user Name"
           title="UserName"
           content={this.handleUserChange}

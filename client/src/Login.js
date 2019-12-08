@@ -24,51 +24,54 @@ class Login extends React.Component {
 
   loginTo = () => {
     const user = {
-      name: this.state.name,
+      username: this.state.username,
       password: this.state.password
     };
-
-    
-
-    if (!(user.name && user.password)) {
+    if (!(user.username && user.password)) {
       return;
     }
     axios.post(`http://localhost:3001/api/findUser`, { user }).then(res => {
-      console.log(res);
+      console.log("line 34 "+res);
       const { history } = this.props;
-      console.log(res.data.success);
+      console.log("line 36" +res.data.success);
       if(res.data.success){
-        history.replace("/Add");
-       
+        history.replace("/Game");
       }
     });
   };
 
   handleUserInsertion = value => {
-    this.setState({ name: value });
+    this.setState({ username: value });
   };
 
   handlePasswordInsertion = value => {
     this.setState({ password: value });
   };
+
+
   render() {
     return (
-      <div className="login">
-        <Field
-          remark="userName"
+      <div className="container">
+      <div className="signup">
+      <div className="header">
+      <h3>Login</h3>
+    </div>
+        <Field 
+        title="userName"
           type_field="text"
           content={this.handleUserInsertion}
         />
         <Field
-          remark="password"
           type_field="password"
+          title="password"
           content={this.handlePasswordInsertion}
         />
         <div className="button_cont" align="center" onClick={this.loginTo}>
-          <Link className="example_f" to="/">
+          <button className="btn" onClick={this.loginTo}>
             <span>Login</span>
-          </Link>
+          </button>
         </div>
+      </div>
       </div>
     );
   }

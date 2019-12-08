@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 //var passport = require('passport');
 const Data = require("../models/data");
-const User=require("../models/Users")
+const User = require("../models/Users")
 
 /*
 passport.use(new LocalStrategy(
@@ -41,26 +41,31 @@ router.post("/updateData", (req, res) => {
 
   router.post("/putUser", (req, res) => {
     console.log("server");
-    let user = new User();
+    let data = new User();
     const new_user = req.body;
+    console.log(new_user);
     if ((!new_user.id && new_user.id!== 0) || !new_user.name || !new_user.password) {
       return res.json({
         success: false,
-        error: "INVALID INPUTS"
+        error: "INVALID INPUTS",
       });
     }
     console.log(new_user);
-    user=new_user;
-    user.save(err => {
+    data.id=new_user.id;
+    data.username=new_user.user_name;
+    data.name=new_user.name;
+    data.email=new_user.email;
+    data.password=new_user.password;
+    data.save(err => {
       if (err) return res.json({ success: false, error: err });
       return res.json({ success: true });
     });
   });
 
   router.post("/findUser", (req, res) => {
-    const { user } = req.body;
+    const { user ,password } = req.body;
     console.log(user);
-    Data.find({ name: user.name }, function(err, docs) {
+    User.find({ username: user.username }, function(err, docs) {
       if (docs.length) {
         res.json({ success: true });
       } else {
