@@ -5,6 +5,11 @@ body{
   align-items: center;  
   
 }
+.Headline{
+  font-family: 'French Script MT';
+  font-size: 30px;
+  color: red;
+  }
 
 img {
   width: 9vh;

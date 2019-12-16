@@ -1,28 +1,41 @@
-.header1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.header1 h3{
     align-self: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: mediumblue;
+  font-family: 'Bradley Hand ITC';
+    color: rgb(206, 41, 19);
+    font-size:30px ;
+}
+* {
+  box-sizing: border-box;
+}
+.btnPlay{
+  background-color:salmon;
+  border-radius: 8px;
+  font-family: 'French Script MT';
+  font-size: 30px;
+  }
+
+  .btnPlay:hover{
+    background-color:rgb(255,143,143);
+    ;
+    
+    }
+.videoContainer{
+  background-image: url("./videoBackground.jpg");
+  align-items: center;
+  display: flex;
+  margin: 20px;
+  justify-content: center;
+  align-content: center;
+
+  
+}
+.hiddenYouTube{
+  visibility: hidden;
+  height: 0px;
+  width: 0px;
 }
 
-table{
-    width: flex;
-    font: outline;
-    align-items: center;
-    border-collapse: collapse;
-    
-  }
-  
-  th{
-    margin: 0%;
-    padding: 0%;
-  }
-.tr_row{
-    font-size: 7vh;
-    font-family:'Bradley Hand ITC', sans-serif;
-    margin: 0px,0px,30px,10px;
-    background-color: rgb(133, 125, 182);
-    align-content: center;
-  }
+.visibleYouTube{
+  visibility: visible;
+
+}
