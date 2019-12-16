@@ -1,28 +1,26 @@
 var express = require('express');
 var router = express.Router();
-//var passport = require('passport');
+var passport = require('passport');
 const Data = require("../models/data");
-const User = require("../models/Users")
+const User = require("../models/Users");
+const LocalStrategy = require('passport-local').Strategy;
 
-/*
+
 passport.use(new LocalStrategy(
-    function(username, password, done) {
-        Data.findOne({
-            username: username
-        }, function(err, user) {
-            if (err) {
-                return done(err);
-            }
-            if (!user) {
-                return done(null, false);
-            }
-            if (user.password != password) {
-                return done(null, false);
-            }
-            return done(null, user);
-        });
-    }
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: false});
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: false });
+      }
+      return done(null, user);
+    });
+  }
 ));
+/*
 passport.serializeUser(function(user, done) {
     done(null, user.id);
 });
@@ -62,12 +60,12 @@ router.post("/updateData", (req, res) => {
     });
   });
 
-  router.post("/findUser", (req, res) => {
+  router.post("/findUser",(req, res) => {
     const { user ,password } = req.body;
     console.log(user);
     User.find({ username: user.username }, function(err, docs) {
       if (docs.length) {
-        res.json({ success: true });
+        res.json({  success: true });
       } else {
         res.json({ success: false });
       }
