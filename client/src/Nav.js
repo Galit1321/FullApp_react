@@ -30,8 +30,8 @@ class Nav extends React.Component {
           <Link to="/Login">
             <li>Login</li>
           </Link>
-          <Link to="/YouTube">
-          <li>YouTube</li>
+          <Link to="/PlayList">
+          <li>PlayList</li>
           </Link>
           <Link to="/Game">
           <li>Game</li>

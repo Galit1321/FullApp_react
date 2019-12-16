@@ -1,0 +1,28 @@
+.header1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: mediumblue;
+}
+
+table{
+    width: flex;
+    font: outline;
+    align-items: center;
+    border-collapse: collapse;
+    
+  }
+  
+  th{
+    margin: 0%;
+    padding: 0%;
+  }
+.tr_row{
+    font-size: 7vh;
+    font-family:'Bradley Hand ITC', sans-serif;
+    margin: 0px,0px,30px,10px;
+    background-color: rgb(133, 125, 182);
+    align-content: center;
+  }

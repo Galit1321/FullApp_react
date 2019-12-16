@@ -1,15 +1,13 @@
-
 import React from 'react';
+import "./css/Videos.css"
+import Video from './Video';
 
-import ReactPlayer from "react-player";
 
 class Bar extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          
           data:[],
-          
         };
       }
       componentDidMount() {
@@ -24,19 +22,17 @@ class Bar extends React.Component{
         const data=this.state.data;
         return (
             <div>
-            <table>
-          {data.length <= 0
+            <div className="header1">
+            <h2 >Welcome to My Play List</h2>
+            </div>
+           
+            {data.length <= 0
             ? "NO DB ENTRIES YET"
             : data.map(dat => (
-                <tr className="tr_row" key={dat}>
-                <td>{dat.name}</td>
-                  <td>
-                    <ReactPlayer url={dat.url}/>
-                  </td>
-                </tr>
+              <Video data={dat}/>
               ))}
         
-      </table>
+          
             </div>
         )};
 }

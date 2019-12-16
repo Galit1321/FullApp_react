@@ -36,7 +36,7 @@ class Register extends Component {
   };
 
   putDataToDB = () => {
-    this.setState({id: this.state.id++})
+    this.setState({id: this.state.id+1})
     axios.post("http://localhost:3001/api/putUser", {
       id: this.state.id,
       name: this.state.name,

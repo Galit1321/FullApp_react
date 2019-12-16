@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./css/App.css";
 import Register from "./Register";
 import Nav from "./Nav";
-import Bar from "./Bar";
+import PlayList from "./Playlist";
 import Login from "./Login";
 import Game from "./Game";
 
@@ -26,8 +26,7 @@ class App extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/Register" component={Register} />
             <Route path="/Login" component={Login} />
-           
-            <Route path="/YouTube" component={Bar} />
+            <Route path="/PlayList" component={PlayList} />
             <Route path='/Game' component={Game}/>
           </Switch>
           </div>
