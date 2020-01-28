@@ -22,7 +22,9 @@ class Video extends React.Component{
       }
     render(){
         
-        return(<div className="videoContainer">
+        return(
+        <div>
+ <div className="videoContainer">
         <div className="header1">
         <h3>{this.state.song}</h3>
         <h3>{this.state.name}</h3>
@@ -33,7 +35,9 @@ class Video extends React.Component{
         <ReactPlayer url={this.state.url}  ></ReactPlayer>
         </div>
         
-        </div>);
+        </div>
+        </div>
+       );
     }
 }
 export default Video;
